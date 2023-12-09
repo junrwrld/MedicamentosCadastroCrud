@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MedicamentosModel>
+@{
+
+}
+
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-sm-center mb-5">
+        <h1 class="">Medicamentos</h1>
+        <a class="btn btn-success mx-2" asp-controller="Medicamentos" asp-action="Cadastrar"><i class="bi bi-database-add mx-2"></i>Cadastre novo medicamento</a>
+    </div>
+
+    @if(TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-warning text-primary-emphasis " role="alert">
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+<table id="Medicamentos" class="table table-hover mt-5">
+    <thead>
+        <tr>
+            <th scope="col">Medicamento</th>
+            <th scope="col">Medida</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Data Recebimento</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model != null)
+        {
+
+            @foreach(var medicamento in Model)
+            {
+                <tr>
+                    <th scope="row">@medicamento.Medicamento</th>
+                    <td>@medicamento.Medida</td>
+                    <td>@medicamento.Quantidade</td>
+                    <td>@medicamento.DataRecebimento</td>
+                    <td>
+                            <a asp-controller="Medicamentos" asp-route-id="@medicamento.Id" asp-action="Editar" class="btn btn-warning mx-2"><i class="bi bi-pencil-square mx-2"></i>Editar</a>
+                            <a asp-controller="Medicamentos" asp-route-id="@medicamento.Id" asp-action="Excluir" class="btn btn-danger mx-2"><i class="bi bi-folder-x mx-2"></i>Excluir</a>
+                    </td>
+                </tr>
+            }
+
+        }
+</table>
+</div>

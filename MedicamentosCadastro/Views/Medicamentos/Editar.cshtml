@@ -1,0 +1,41 @@
+﻿@model MedicamentosModel
+@{
+    ViewData["title"] = "Editar Medicamento";
+}
+
+<div class="container bg-dark p-5 rounded-5">
+
+    <div class="mb-5 text-center">
+        <h1 class="text-light">Edição de Medicamentos</h1>
+    </div>
+
+    <form method="post" asp-controller="Medicamentos" asp-action="Editar">
+        <input type="hidden" asp-for="Id"/>
+
+        <div class="mb-3">
+            <label for="Medicamento" class="form-label text-light">Medicamento</label>
+            <input type="text" class="form-control" asp-for="Medicamento" id="Medicamento" placeholder="Qual o nome do medicamento?">
+            <span asp-validation-for="Medicamento" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Medida" class="form-label text-light">Medida</label>
+            <input type="text" class="form-control" asp-for="Medida" id="Medida" placeholder="Especifique a Unidade de Medida">
+            <span asp-validation-for="Medida" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Quantidade" class="form-label text-light">Quantidade</label>
+            <input type="number" class="form-control" asp-for="Quantidade" id="Quantidade" placeholder="Especifique a quantidade de Medicamentos em Estoque">
+            <span asp-validation-for="Quantidade" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="btn btn-success w-50">Editar</button>
+            <a class="btn btn-warning w-50" asp-controller="Medicamentos" asp-action="Index">Voltar</a>
+        </div>
+
+
+
+    </form>
+</div>
